@@ -13,7 +13,7 @@ export default function Event(props) {
         <b>Address:</b> {address}
       </li>
       <li>
-        <b>Start time:</b>
+        <b>Start time: {/* TODO: relative time here */}</b>
       </li>
       <li>
         <b>Trucks Attending: {attending.length}</b>

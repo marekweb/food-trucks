@@ -3,10 +3,12 @@
   "dependencies": {
     "axios": "^0.17.1",
     "express": "^4.16.2",
+    "npm-run-all": "^4.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "scripts": {
+    "start": "run-p start-server start-frontend",
     "start-server": "nodemon --ignore src server.js",
     "start-frontend": "react-scripts start",
     "build-frontend": "react-scripts build"

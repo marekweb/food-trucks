@@ -1,41 +1,55 @@
-# Food Truck Events App
+# Food Truck Events
 
-Tiny app using Node.js, Express, and React (with `react-scripts`).
+What is a **Food Truck Event**? It's an event that food trucks attend, and where you can go discover food trucks.
 
-Here's what the app does:
+Each food truck event has a location, a date and start/end time, and a list of food trucks that are attending.
 
-- Express server that fetches food truck events from an API at bestfoodtrucks.com
-- The Express server provides a `/data` endpoint for the front-end to use
-- The React front-end fetches `/data` and displays it to the user
+# About this app
 
-## Server endpoints
+This project has 2 parts:
 
-- `/data` Returns a JSON array of food truck events.
+- Express app: `server.js`
+- React front-end: in the `src` directory, using the `create-react-app` tool.
 
-The fields that we are interested in:
+Here's what happens when you open the app:
 
-- `name`: the name of the food truck event
-- `address`: an address string
-- `date`: a human-readable date string
-- `event_start_unix`: the start time of the event, in UNIX timestamp format (as a number)
-- `attending`: an array of food trucks attending this event. Each attending truck object contains `name` and `cuisine_type` among other fields.
+- The React front-end fetches `/events` on the back-end to get a list of food truck events.
+- The Express back-end handles the request to `/events` and queries an API at bestfoodtrucks.com.
+- The React front-end displays a list of food truck events and their details.
 
-## TODO list
+## Description of the API back-end
+
+- `/events` Returns a JSON array of food truck events.
+
+Food Truck Event object:
+
+- `name`: the name of the food truck event (string)
+- `address`: an address (string)
+- `date`: a human-readable date (string)
+- `event_start_unix`: the start time of the event, in UNIX timestamp format (number)
+- `attending`: an array of food trucks attending this event. Each attending food truck object is described below:
+
+Food Truck object
+
+- `name`: the name of the food truck (string)
+- `cuisine_type`: the type of cuisine (string)
+
+## Tasks TODO
 
 Here are some tasks to improve this project.
 
 - **Filter the events**. Show only events that have at least 1 attending truck (the JSON field is called `attending` and it's an array of attending trucks)
 - **Show the attending trucks**. Display the `name` (and maybe `cuisine_type`) for each food truck attending the event. Render them as list items `<li>` inside of the provided `<ul>` tag.
-- **Show the event start time as a relative time**. In addition to the date (which is already being shown), show the relative time from now of the start of the event. Example: "5 hours from now".
-    - Hint: use the `moment` library and its `fromNow` method.
-    - Hint 2: the `start_time_unix` field on each event is a UNIX timestamp of the start time, which can be parsed by the `moment` library.
+- **Show the event start time as a relative time**. In addition to the date (which is already being shown), show the start time of event as a relative time. Example: "5 hours from now".
+    - Hint: use the `moment` library and its `fromNow` method. You will need to install `moment`.
+    - Hint 2: the `start_time_unix` field on each event is a UNIX timestamp, which can be parsed by the `moment` library.
 
 ## Modules used
 
 - `axios`: make HTTP requests to APIs
 - `react-scripts`: Scripts from the "Create React App project, to configure and build a React app.
 - `nodemon`: Run the node.js script and automatically reload when files are changed
-- `express` to run the server
+- `express` run the back-end
 
 ## Discussion questions
 
